@@ -1,180 +1,565 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Chikmagalur - Dandeli - Goa | 4 Days - 5 Nights</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    :root{
-      --accent:#0b76ef;
-      --dark:#0f1724;
-      --muted:#6b7280;
-      --card:#ffffff;
-      --bg:#f3f6fb;
-      --maxw:1100px;
-      --radius:12px;
-      --shadow: 0 8px 30px rgba(15,23,36,0.08);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
-    .container{max-width:var(--maxw);margin:28px auto;padding:20px}
-    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:20px}
-    header.hero{display:grid;grid-template-columns:1fr 380px;gap:20px;padding:28px}
-    .hero-left h1{margin:0;font-size:28px;letter-spacing:0.6px}
-    .hero-left p{color:var(--muted);margin:8px 0 16px}
-    .cta{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600}
-    .btn.secondary{background:#eef6ff;color:var(--accent);border:1px solid rgba(11,118,239,0.12)}
-    .meta{font-size:14px;color:var(--muted);margin-top:8px}
-    .hero-right img{width:100%;height:100%;object-fit:cover;border-radius:10px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px}
-    .itinerary{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:18px}
-    .section{padding:18px;border-top:1px solid #f1f5f9}
-    .section h3{margin:0 0 8px}
-    ul{margin:8px 0 0 18px}
-    .icons{display:flex;gap:12px;flex-wrap:wrap}
-    .feature{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:#fbfdff}
-    .feature i{font-size:20px;color:var(--accent);width:28px;text-align:center}
-    footer{padding:18px;text-align:center;color:var(--muted);font-size:13px}
-    @media (max-width:880px){
-      header.hero{grid-template-columns:1fr; padding:18px}
-      .grid{grid-template-columns:1fr}
-      .itinerary{grid-template-columns:1fr}
-      .hero-right{order:-1}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Escape: Chikmagalur - Dandeli - Goa | Buraq TravelHub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0f172a;       /* Deep Navy */
+            --accent: #D4AF37;        /* Metallic Gold */
+            --accent-hover: #b5952f;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --text-gray: #64748b;
+            --glass: rgba(255, 255, 255, 0.95);
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light);
+            color: var(--primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+        }
+
+        /* --- Header / Nav --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .brand span { color: var(--accent); }
+
+        .nav-contact {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-contact a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        
+        .nav-contact a:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .btn-main {
+            padding: 15px 40px;
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            background: var(--white);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Highlights Grid --- */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 80px;
+        }
+
+        .highlight-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+
+        .highlight-card:hover { transform: translateY(-10px); }
+
+        .highlight-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .highlight-card h3 { margin-bottom: 10px; }
+        .highlight-card p { color: var(--text-gray); font-size: 0.95rem; }
+
+        /* --- Itinerary Timeline --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title span { color: var(--accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            max-width: 900px;
+            margin: 0 auto 80px;
+        }
+
+        /* Vertical Line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .day-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            margin-left: 50px;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
+        }
+
+        /* Timeline Dot */
+        .day-card::after {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 30px;
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 15px;
+        }
+
+        .day-badge {
+            background: var(--primary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .day-location {
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--text-gray);
+        }
+
+        .activity-item i {
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        .sub-header {
+            font-size: 1rem;
+            color: var(--primary);
+            margin: 15px 0 10px;
+            font-weight: 600;
+        }
+
+        /* --- Inclusions --- */
+        .inclusions {
+            background: var(--primary);
+            color: var(--white);
+            padding: 80px 20px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+        }
+
+        .inclusions h2 { color: var(--white); margin-bottom: 40px; text-align: center; }
+
+        .inc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .inc-item {
+            text-align: center;
+        }
+        
+        .inc-item i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #0b1120;
+            color: #94a3b8;
+            padding: 60px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-cta h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .contact-box {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-row:hover { color: var(--accent); }
+
+        .copyright {
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* --- Floating Button (Mobile) --- */
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 999;
+            font-size: 24px;
+            text-decoration: none;
+            display: none; /* Hidden on Desktop */
+        }
+
+        @media (min-width: 768px) {
+            .activity-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-contact { display: none; }
+            .timeline::before { left: 10px; }
+            .day-card { margin-left: 30px; padding: 20px; }
+            .day-card::after { left: -28px; }
+            .floating-cta { display: flex; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card hero">
-      <div class="hero-left">
-        <h1>CHIKMAGALUR - DANDELI - GOA</h1>
-        <p><strong>4 DAYS - 5 NIGHTS</strong></p>
-        <div class="meta">Curated itinerary for adventure, beaches and relaxation. Ready-to-book package from Buraq_TravelHub.</div>
-        <div class="cta" style="margin-top:18px">
-          <a class="btn" href="mailto:info@buraqtravelhub.com?subject=Booking%20Request%20-%20Chikmagalur%20Dandeli%20Goa">Book Now</a>
-          <a class="btn secondary" href="#itinerary">View Itinerary</a>
+
+    <nav>
+        <a href="#" class="brand">Buraq_<span>TravelHub</span></a>
+        <div class="nav-contact">
+            <a href="tel:+919972792615"><i class="fa-solid fa-phone"></i> +91 9972792615</a>
+            <a href="mailto:msuhaib5146@gmail.com"><i class="fa-solid fa-envelope"></i> msuhaib5146@gmail.com</a>
         </div>
-      </div>
-      <div class="hero-right">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=900&auto=format&fit=crop&ixlib=rb-4.0.3&s=3d6b0d1b8d0a4b4e6d6d1f0a6d3b8c2f" alt="travel hero">
-      </div>
-    </div>
+    </nav>
 
-    <div class="card grid" id="highlights">
-      <div class="feature"><i class="fa-solid fa-mountain-sun"></i><div><strong>Chikmagalur</strong><div class="meta">Hills, waterfalls & jeep trekking</div></div></div>
-      <div class="feature"><i class="fa-solid fa-water"></i><div><strong>Dandeli</strong><div class="meta">River adventures & rope activities</div></div></div>
-      <div class="feature"><i class="fa-solid fa-umbrella-beach"></i><div><strong>Goa</strong><div class="meta">Beaches, nightlife & heritage</div></div></div>
-    </div>
+    <header class="hero">
+        <div class="subtitle">4 Days — 5 Nights</div>
+        <h1>Chikmagalur • Dandeli • Goa</h1>
+        <p style="margin-bottom: 30px; font-size: 1.1rem; max-width: 600px; opacity: 0.9;">
+            A curated journey blending hill station trekking, river adventures, and the vibrant coastal life of Goa.
+        </p>
+        <a href="https://wa.me/919972792615?text=Hi,%20I%20am%20interested%20in%20the%20Chikmagalur-Dandeli-Goa%20Package" class="btn-main">
+            Request Booking
+        </a>
+    </header>
 
-    <div class="card section" id="itinerary">
-      <h3>Night Travel to Chikmagalur 🚎</h3>
-    </div>
+    <div class="container">
+        
+        <div class="highlights">
+            <div class="highlight-card">
+                <i class="fa-solid fa-mountain-sun"></i>
+                <h3>Chikmagalur</h3>
+                <p>Mullayanagiri peak, lush coffee estates & Hebbe waterfalls jeep treks.</p>
+            </div>
+            <div class="highlight-card">
+                <i class="fa-solid fa-water"></i>
+                <h3>Dandeli</h3>
+                <p>Kali River rafting, jungle stays, and adrenaline-pumping water sports.</p>
+            </div>
+            <div class="highlight-card">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <h3>Goa</h3>
+                <p>Golden sands, historic forts, vibrant nightlife & heritage churches.</p>
+            </div>
+        </div>
 
-    <div class="card section">
-      <h3>Day 1 – CHIKMAGALUR</h3>
-      <p><strong>Fresh-up & Breakfast 🍲🍽️</strong></p>
-      <ul>
-        <li>Baba Budangiri</li>
-        <li>Waterfalls</li>
-        <li>Suicide Point</li>
-        <li>Mullayanagiri</li>
-        <li>Z Point</li>
-        <li>Jeep Trekking Adventure (Hebbe Falls – based on route)</li>
-      </ul>
-      <p><strong>After dinner, leave for Dandeli</strong></p>
-    </div>
+        <div class="section-title">
+            <span>The Journey</span>
+            <h2>Detailed Itinerary</h2>
+        </div>
 
-    <div class="card section">
-      <h3>Day 2 – DANDELI</h3>
-      <p><strong>Fresh-up & Breakfast 🍲🍽️</strong></p>
-      <h4>Adventure Activities 🏄</h4>
-      <ul>
-        <li>Kayaking 🚣‍♂️</li>
-        <li>Water Zorbing</li>
-        <li>Boating</li>
-        <li>Zipline</li>
-        <li>Rafting (extra pay)</li>
-      </ul>
-      <h4>Rope Activities 🪢</h4>
-      <ul>
-        <li>Hanging Log</li>
-        <li>Zig-Zag Bridge</li>
-        <li>Quake Walk</li>
-      </ul>
-    </div>
+        <div class="timeline">
+            
+            <div class="day-card" style="border-left: 4px solid var(--primary);">
+                <div class="day-header">
+                    <span class="day-badge">Day 0</span>
+                    <span class="day-location">Departure</span>
+                </div>
+                <div class="activity-item">
+                    <i class="fa-solid fa-bus"></i>
+                    <div><strong>Night Travel:</strong> Overnight journey to Chikmagalur via luxury coach.</div>
+                </div>
+            </div>
 
-    <div class="card section">
-      <h3>Photo Points & Activities</h3>
-      <h4>Photo Points</h4>
-      <ul>
-        <li>Glass Bridge</li>
-        <li>Flying Wings</li>
-        <li>Love Dandeli</li>
-      </ul>
-      <h4>Indoor Activities</h4>
-      <ul>
-        <li>Trekking 🚶🏿</li>
-        <li>Campfire 🔥</li>
-        <li>Swimming</li>
-        <li>Rain Dance 🏊</li>
-        <li>Archery 🏹</li>
-      </ul>
-      <h4>Sightseeing 🌇</h4>
-      <ul>
-        <li>Backwaters</li>
-        <li>Moulangi</li>
-        <li>Supa Dam (on route)</li>
-      </ul>
-      <p><strong>Dinner 🍲🍽️</strong></p>
-      <p><strong>Stay 🏡 @ Resort (selectable)</strong></p>
-    </div>
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 1</span>
+                    <span class="day-location">Chikmagalur</span>
+                </div>
+                <p style="margin-bottom: 15px; color:var(--accent);"><strong>Fresh-up & Breakfast 🍲</strong></p>
+                <div class="activity-grid">
+                    <div class="activity-item"><i class="fa-solid fa-check"></i> Baba Budangiri</div>
+                    <div class="activity-item"><i class="fa-solid fa-check"></i> Mullayanagiri Peak</div>
+                    <div class="activity-item"><i class="fa-solid fa-check"></i> Jhari Waterfalls</div>
+                    <div class="activity-item"><i class="fa-solid fa-check"></i> Z Point & Suicide Point</div>
+                    <div class="activity-item" style="grid-column: 1/-1"><i class="fa-solid fa-truck-monster"></i> <strong>Highlight:</strong> Jeep Trekking Adventure</div>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.9rem; color:#64748b;"><em>After dinner, proceed to Dandeli (Overnight travel).</em></p>
+            </div>
 
-    <div class="card section">
-      <h3>Day 3</h3>
-      <p><strong>Breakfast 🍲🍽️</strong></p>
-      <p><strong>Travel to Goa 🚌</strong></p>
-      <ul>
-        <li>Vagator Beach</li>
-        <li>Anjuna Beach</li>
-        <li>Baga Beach Nightlife</li>
-      </ul>
-      <p><strong>Dinner 🍽️🍲</strong></p>
-      <p><strong>Stay 🏘️ – AC Room with Pool</strong><br>Around Baga Beach</p>
-    </div>
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 2</span>
+                    <span class="day-location">Dandeli</span>
+                </div>
+                
+                <h4 class="sub-header">Water & Adventure 🏄</h4>
+                <div class="activity-grid">
+                    <div class="activity-item"><i class="fa-solid fa-person-kayaking"></i> Kayaking & Boating</div>
+                    <div class="activity-item"><i class="fa-solid fa-water"></i> Water Zorbing & Jacuzzi Bath</div>
+                    <div class="activity-item"><i class="fa-solid fa-bridge-water"></i> River Rafting (Add-on)</div>
+                    <div class="activity-item"><i class="fa-solid fa-cable-car"></i> Zipline</div>
+                </div>
 
-    <div class="card section">
-      <h3>Day 4</h3>
-      <p><strong>Breakfast 🍲🍽️</strong></p>
-      <ul>
-        <li>Baga Beach 🏖️</li>
-        <li>Aguada Fort 🏯</li>
-        <li>Calangute Beach 🏖️</li>
-        <li>Old Goa Church</li>
-        <li>Colva Beach</li>
-      </ul>
-      <p><strong>Dinner 🍲🍽️ & Return to College 🚌</strong></p>
-    </div>
+                <h4 class="sub-header">Resort Activities & Stay 🔥</h4>
+                <div class="activity-grid">
+                    <div class="activity-item"><i class="fa-solid fa-fire"></i> Campfire & DJ Music</div>
+                    <div class="activity-item"><i class="fa-solid fa-person-swimming"></i> Swimming Pool & Rain Dance</div>
+                    <div class="activity-item"><i class="fa-solid fa-camera"></i> Photo Points: Glass Bridge</div>
+                    <div class="activity-item"><i class="fa-solid fa-bullseye"></i> Archery & Jungle Trekking</div>
+                </div>
+                <p style="margin-top: 15px;"><strong>Stay:</strong> Jungle Resort / Homestay</p>
+            </div>
 
-    <div class="card section">
-      <h3>Our Specialities</h3>
-      <ul>
-        <li>🤺🤸‍♀️🤸‍♂️ Campfire or DJ</li>
-        <li>💝 Tour Manager</li>
-        <li>🏡 Luxury Deluxe Room</li>
-        <li>Entry Tickets</li>
-        <li>Daily Three-Time Meals (Veg & Non-Veg)</li>
-        <li>Drinking Water</li>
-        <li>Buraq_TravelHub</li>
-      </ul>
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 3</span>
+                    <span class="day-location">Goa (North)</span>
+                </div>
+                <p style="margin-bottom: 15px;">Travel to Goa in the morning.</p>
+                <div class="activity-grid">
+                    <div class="activity-item"><i class="fa-solid fa-umbrella-beach"></i> Vagator Beach</div>
+                    <div class="activity-item"><i class="fa-solid fa-umbrella-beach"></i> Anjuna Beach</div>
+                    <div class="activity-item"><i class="fa-solid fa-martini-glass-citrus"></i> Baga Beach Nightlife</div>
+                </div>
+                <p style="margin-top: 15px;"><strong>Stay:</strong> AC Room with Pool (Near Baga Beach)</p>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">Day 4</span>
+                    <span class="day-location">Goa & Return</span>
+                </div>
+                <div class="activity-grid">
+                    <div class="activity-item"><i class="fa-brands fa-fort-awesome"></i> Aguada Fort</div>
+                    <div class="activity-item"><i class="fa-solid fa-church"></i> Old Goa Church (Heritage)</div>
+                    <div class="activity-item"><i class="fa-solid fa-umbrella-beach"></i> Calangute Beach</div>
+                    <div class="activity-item"><i class="fa-solid fa-umbrella-beach"></i> Colva Beach</div>
+                </div>
+                <p style="margin-top: 15px; border-top: 1px solid #f1f5f9; padding-top: 15px;">
+                    <strong>Evening:</strong> Dinner and return journey to college/drop point.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="inclusions">
+            <h2>The Premium Experience</h2>
+            <div class="inc-grid">
+                <div class="inc-item">
+                    <i class="fa-solid fa-bed"></i>
+                    <h4>Luxury Stays</h4>
+                    <p>Deluxe rooms & Jungle resorts</p>
+                </div>
+                <div class="inc-item">
+                    <i class="fa-solid fa-utensils"></i>
+                    <h4>All Meals</h4>
+                    <p>Breakfast, Lunch & Dinner (Veg/Non-Veg)</p>
+                </div>
+                <div class="inc-item">
+                    <i class="fa-solid fa-ticket"></i>
+                    <h4>Entry Tickets</h4>
+                    <p>All sightseeing entry fees included</p>
+                </div>
+                <div class="inc-item">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <h4>Tour Manager</h4>
+                    <p>Dedicated assistance throughout</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
-      <div class="meta">Contact: <a href="mailto:info@buraqtravelhub.com">imsuhaib5146@gmail.com</a> • Phone: +91 9972792615</div>
-      <div style="margin-top:8px">Designed & Curated by Buraq_TravelHub</div>
+        <div class="footer-cta">
+            <h3>Ready for an Adventure?</h3>
+            <div class="contact-box">
+                <a href="tel:+919972792615" class="contact-row">
+                    <i class="fa-solid fa-phone-volume"></i> +91 9972792615
+                </a>
+                <a href="mailto:msuhaib5146@gmail.com" class="contact-row">
+                    <i class="fa-solid fa-envelope-open-text"></i> msuhaib5146@gmail.com
+                </a>
+            </div>
+            <a href="mailto:info@buraqtravelhub.com?subject=Booking%20Inquiry" class="btn-main">Book Now</a>
+        </div>
+        <div class="copyright">
+            Designed & Curated by <strong>Buraq_TravelHub</strong> &copy; 2025
+        </div>
     </footer>
-  </div>
+
+    <a href="tel:+919972792615" class="floating-cta">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
 </body>
 </html>
