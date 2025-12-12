@@ -80,12 +80,15 @@
 
         /* --- Hero Section --- */
         .hero {
-            height: 85vh;
-            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.7)), 
+            height: 90vh; /* Taller for mobile impact */
+            /* Using a different image that crops better on mobile portrait */
+            background-image: linear-gradient(rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.6)), 
                         url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-position: center center;
+            /* FIXED: Default to scroll on mobile to prevent "sky only" zoom issue */
+            background-attachment: scroll; 
+            
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -94,6 +97,14 @@
             color: var(--white);
             padding: 20px;
             margin-bottom: 50px;
+            position: relative;
+        }
+
+        /* Desktop parallax effect only */
+        @media (min-width: 1024px) {
+            .hero {
+                background-attachment: fixed;
+            }
         }
 
         .hero h1 {
@@ -110,6 +121,7 @@
             margin-bottom: 2rem;
             color: var(--accent);
             font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .btn-main {
@@ -123,6 +135,7 @@
             transition: all 0.3s ease;
             display: inline-block;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            margin-top: 20px;
         }
 
         .btn-main:hover {
@@ -371,6 +384,11 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                /* Ensures image centers on mobile and isn't too zoomed in */
+                background-position: center; 
+                background-attachment: scroll; 
+            }
             .hero h1 { font-size: 2.2rem; }
             .nav-contact { display: none; }
             .timeline::before { left: 10px; }
