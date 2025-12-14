@@ -1,583 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Escape: Chikmagalur - Dandeli - Goa | Buraq TravelHub</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury Escape: Chikmagalur - Dandeli - Goa | Buraq TravelHub</title>
 
-    <style>
-        :root {
-            --primary: #0f172a;       /* Deep Navy */
-            --accent: #D4AF37;        /* Metallic Gold */
-            --accent-hover: #b5952f;
-            --light: #f8fafc;
-            --white: #ffffff;
-            --text-gray: #64748b;
-            --glass: rgba(255, 255, 255, 0.95);
-            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--light);
-            color: var(--primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary);
-        }
+  <style>
+    :root {
+      --primary: #0b1120;
+      --accent: #d4af37;
+      --accent-soft: rgba(212, 175, 55, 0.15);
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text-muted: #64748b;
+      --radius-xl: 22px;
+      --radius-md: 14px;
+      --shadow-lg: 0 30px 60px rgba(2, 6, 23, 0.15);
+      --shadow-md: 0 12px 30px rgba(2, 6, 23, 0.12);
+    }
 
-        /* --- Header / Nav --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-        
-        .brand span { color: var(--accent); }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #f8fafc, #eef2f7);
+      color: var(--primary);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
-        .nav-contact {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
 
-        .nav-contact a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        
-        .nav-contact a:hover { color: var(--accent); }
+    /* Smooth animations */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
 
-        /* --- Hero Section --- */
-        .hero {
-            height: 90vh; /* Taller for mobile impact */
-            /* Using a different image that crops better on mobile portrait */
-            background-image: linear-gradient(rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.6)), 
-                        url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center center;
-            /* FIXED: Default to scroll on mobile to prevent "sky only" zoom issue */
-            background-attachment: scroll; 
-            
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 20px;
-            margin-bottom: 50px;
-            position: relative;
-        }
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        /* Desktop parallax effect only */
-        @media (min-width: 1024px) {
-            .hero {
-                background-attachment: fixed;
-            }
-        }
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 6%;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            line-height: 1.2;
-        }
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      text-decoration: none;
+    }
 
-        .hero .subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            color: var(--accent);
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
+    .brand span { color: var(--accent); }
 
-        .btn-main {
-            padding: 15px 40px;
-            background: var(--accent);
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-            margin-top: 20px;
-        }
+    .nav-actions a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: .9rem;
+      margin-left: 22px;
+      transition: color .3s ease;
+    }
 
-        .btn-main:hover {
-            transform: translateY(-3px);
-            background: var(--white);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+    .nav-actions a:hover { color: var(--accent); }
 
-        /* --- Container --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    /* Hero */
+    header.hero {
+      min-height: 100vh;
+      background: linear-gradient(rgba(11,17,32,.55), rgba(11,17,32,.8)),
+        url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1920&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 20px 80px;
+    }
 
-        /* --- Highlights Grid --- */
-        .highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: -80px;
-            position: relative;
-            z-index: 10;
-            margin-bottom: 80px;
-        }
+    .hero-content {
+      max-width: 900px;
+      color: #fff;
+    }
 
-        .highlight-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s ease;
-            border-top: 4px solid var(--accent);
-        }
+    .hero-content .tag {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: .75rem;
+      margin-bottom: 24px;
+    }
 
-        .highlight-card:hover { transform: translateY(-10px); }
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      margin-bottom: 20px;
+    }
 
-        .highlight-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
+    .hero-content p {
+      max-width: 650px;
+      margin: 0 auto 36px;
+      opacity: .9;
+      font-size: 1.05rem;
+    }
 
-        .highlight-card h3 { margin-bottom: 10px; }
-        .highlight-card p { color: var(--text-gray); font-size: 0.95rem; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 44px;
+      background: linear-gradient(135deg, var(--accent), #f0d77a);
+      color: #111827;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 999px;
+      box-shadow: 0 20px 40px rgba(212,175,55,.45);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
 
-        /* --- Itinerary Timeline --- */
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
-        .section-title span { color: var(--accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 30px 60px rgba(212,175,55,.55);
+    }
 
-        .timeline {
-            position: relative;
-            padding: 20px 0;
-            max-width: 900px;
-            margin: 0 auto 80px;
-        }
+    /* Sections */
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 0 22px;
+    }
 
-        /* Vertical Line */
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #e2e8f0;
-        }
+    section { margin-bottom: 110px; }
 
-        .day-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 40px;
-            margin-left: 50px;
-            position: relative;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            border: 1px solid #f1f5f9;
-        }
+    .section-title {
+      text-align: center;
+      margin-bottom: 70px;
+    }
 
-        /* Timeline Dot */
-        .day-card::after {
-            content: '';
-            position: absolute;
-            left: -36px;
-            top: 30px;
-            width: 14px;
-            height: 14px;
-            background: var(--accent);
-            border: 3px solid var(--white);
-            border-radius: 50%;
-            box-shadow: 0 0 0 2px var(--accent);
-        }
+    .section-title span {
+      font-size: .8rem;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
 
-        .day-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 15px;
-        }
+    .section-title h2 { font-size: 2.6rem; }
 
-        .day-badge {
-            background: var(--primary);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
 
-        .day-location {
-            color: var(--accent);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            font-style: italic;
-        }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      box-shadow: var(--shadow-md);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
 
-        .activity-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: var(--shadow-lg);
+    }
 
-        .activity-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            color: var(--text-gray);
-        }
+    .card i {
+      font-size: 2.6rem;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
 
-        .activity-item i {
-            color: var(--accent);
-            margin-top: 4px;
-        }
+    .card p { color: var(--text-muted); }
 
-        .sub-header {
-            font-size: 1rem;
-            color: var(--primary);
-            margin: 15px 0 10px;
-            font-weight: 600;
-        }
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+    }
 
-        /* --- Inclusions --- */
-        .inclusions {
-            background: var(--primary);
-            color: var(--white);
-            padding: 80px 20px;
-            border-radius: 20px;
-            margin-bottom: 50px;
-        }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e5e7eb;
+    }
 
-        .inclusions h2 { color: var(--white); margin-bottom: 40px; text-align: center; }
+    .timeline-card {
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 30px;
+      margin-bottom: 40px;
+      margin-left: 60px;
+      position: relative;
+      box-shadow: var(--shadow-md);
+    }
 
-        .inc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 28px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px var(--accent-soft);
+    }
 
-        .inc-item {
-            text-align: center;
-        }
-        
-        .inc-item i {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
+    /* Inclusions */
+    .inclusions {
+      background: linear-gradient(135deg, #0b1120, #020617);
+      color: #fff;
+      padding: 90px 20px;
+      border-radius: 30px;
+    }
 
-        /* --- Footer --- */
-        footer {
-            background: #0b1120;
-            color: #94a3b8;
-            padding: 60px 20px 30px;
-            text-align: center;
-        }
+    .inc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 34px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
 
-        .footer-cta h3 {
-            color: var(--white);
-            margin-bottom: 20px;
-        }
+    .inc-grid i {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
 
-        .contact-box {
-            display: inline-flex;
-            flex-direction: column;
-            gap: 10px;
-            background: rgba(255,255,255,0.05);
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+    /* Footer */
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      padding: 70px 20px 40px;
+      text-align: center;
+    }
 
-        .contact-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
+    footer h3 { color: #fff; margin-bottom: 24px; }
 
-        .contact-row:hover { color: var(--accent); }
+    .footer-contacts a {
+      display: block;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
 
-        .copyright {
-            font-size: 0.8rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-        }
+    .footer-contacts a:hover { color: var(--accent); }
 
-        /* --- Floating Button (Mobile) --- */
-        .floating-cta {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: var(--primary);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            z-index: 999;
-            font-size: 24px;
-            text-decoration: none;
-            display: none; /* Hidden on Desktop */
-        }
+    /* Floating CTA */
+    .float-btn {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--accent), #f0d77a);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(212,175,55,.45);
+      z-index: 1000;
+      color: #111827;
+      font-size: 26px;
+      text-decoration: none;
+    }
 
-        @media (min-width: 768px) {
-            .activity-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                /* Ensures image centers on mobile and isn't too zoomed in */
-                background-position: center; 
-                background-attachment: scroll; 
-            }
-            .hero h1 { font-size: 2.2rem; }
-            .nav-contact { display: none; }
-            .timeline::before { left: 10px; }
-            .day-card { margin-left: 30px; padding: 20px; }
-            .day-card::after { left: -28px; }
-            .floating-cta { display: flex; }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .nav-actions { display: none; }
+      .timeline::before { left: 8px; }
+      .timeline-card { margin-left: 36px; }
+      .timeline-card::before { left: -30px; }
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="brand">Buraq_<span>TravelHub</span></a>
-        <div class="nav-contact">
-            <a href="tel:+919972792615"><i class="fa-solid fa-phone"></i> +91 9972792615</a>
-            <a href="mailto:msuhaib5146@gmail.com"><i class="fa-solid fa-envelope"></i> msuhaib5146@gmail.com</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="subtitle">4 Days — 5 Nights</div>
-        <h1>Chikmagalur • Dandeli • Goa</h1>
-        <p style="margin-bottom: 30px; font-size: 1.1rem; max-width: 600px; opacity: 0.9;">
-            A curated journey blending hill station trekking, river adventures, and the vibrant coastal life of Goa.
-        </p>
-        <a href="https://wa.me/919972792615?text=Hi,%20I%20am%20interested%20in%20the%20Chikmagalur-Dandeli-Goa%20Package" class="btn-main">
-            Request Booking
-        </a>
-    </header>
-
-    <div class="container">
-        
-        <div class="highlights">
-            <div class="highlight-card">
-                <i class="fa-solid fa-mountain-sun"></i>
-                <h3>Chikmagalur</h3>
-                <p>Mullayanagiri peak, lush coffee estates & Hebbe waterfalls jeep treks.</p>
-            </div>
-            <div class="highlight-card">
-                <i class="fa-solid fa-water"></i>
-                <h3>Dandeli</h3>
-                <p>Kali River rafting, jungle stays, and adrenaline-pumping water sports.</p>
-            </div>
-            <div class="highlight-card">
-                <i class="fa-solid fa-umbrella-beach"></i>
-                <h3>Goa</h3>
-                <p>Golden sands, historic forts, vibrant nightlife & heritage churches.</p>
-            </div>
-        </div>
-
-        <div class="section-title">
-            <span>The Journey</span>
-            <h2>Detailed Itinerary</h2>
-        </div>
-
-        <div class="timeline">
-            
-            <div class="day-card" style="border-left: 4px solid var(--primary);">
-                <div class="day-header">
-                    <span class="day-badge">Day 0</span>
-                    <span class="day-location">Departure</span>
-                </div>
-                <div class="activity-item">
-                    <i class="fa-solid fa-bus"></i>
-                    <div><strong>Night Travel:</strong> Overnight journey to Chikmagalur via luxury coach.</div>
-                </div>
-            </div>
-
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-badge">Day 1</span>
-                    <span class="day-location">Chikmagalur</span>
-                </div>
-                <p style="margin-bottom: 15px; color:var(--accent);"><strong>Fresh-up & Breakfast 🍲</strong></p>
-                <div class="activity-grid">
-                    <div class="activity-item"><i class="fa-solid fa-check"></i> Baba Budangiri</div>
-                    <div class="activity-item"><i class="fa-solid fa-check"></i> Mullayanagiri Peak</div>
-                    <div class="activity-item"><i class="fa-solid fa-check"></i> Jhari Waterfalls</div>
-                    <div class="activity-item"><i class="fa-solid fa-check"></i> Z Point & Suicide Point</div>
-                    <div class="activity-item" style="grid-column: 1/-1"><i class="fa-solid fa-truck-monster"></i> <strong>Highlight:</strong> Jeep Trekking Adventure</div>
-                </div>
-                <p style="margin-top: 15px; font-size: 0.9rem; color:#64748b;"><em>After dinner, proceed to Dandeli (Overnight travel).</em></p>
-            </div>
-
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-badge">Day 2</span>
-                    <span class="day-location">Dandeli</span>
-                </div>
-                
-                <h4 class="sub-header">Water & Adventure 🏄</h4>
-                <div class="activity-grid">
-                    <div class="activity-item"><i class="fa-solid fa-person-kayaking"></i> Kayaking & Boating</div>
-                    <div class="activity-item"><i class="fa-solid fa-water"></i> Water Zorbing & Jacuzzi Bath</div>
-                    <div class="activity-item"><i class="fa-solid fa-bridge-water"></i> River Rafting (Add-on)</div>
-                    <div class="activity-item"><i class="fa-solid fa-cable-car"></i> Zipline</div>
-                </div>
-
-                <h4 class="sub-header">Resort Activities & Stay 🔥</h4>
-                <div class="activity-grid">
-                    <div class="activity-item"><i class="fa-solid fa-fire"></i> Campfire & DJ Music</div>
-                    <div class="activity-item"><i class="fa-solid fa-person-swimming"></i> Swimming Pool & Rain Dance</div>
-                    <div class="activity-item"><i class="fa-solid fa-camera"></i> Photo Points: Glass Bridge</div>
-                    <div class="activity-item"><i class="fa-solid fa-bullseye"></i> Archery & Jungle Trekking</div>
-                </div>
-                <p style="margin-top: 15px;"><strong>Stay:</strong> Jungle Resort / Homestay</p>
-            </div>
-
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-badge">Day 3</span>
-                    <span class="day-location">Goa (North)</span>
-                </div>
-                <p style="margin-bottom: 15px;">Travel to Goa in the morning.</p>
-                <div class="activity-grid">
-                    <div class="activity-item"><i class="fa-solid fa-umbrella-beach"></i> Vagator Beach</div>
-                    <div class="activity-item"><i class="fa-solid fa-umbrella-beach"></i> Anjuna Beach</div>
-                    <div class="activity-item"><i class="fa-solid fa-martini-glass-citrus"></i> Baga Beach Nightlife</div>
-                </div>
-                <p style="margin-top: 15px;"><strong>Stay:</strong> AC Room with Pool (Near Baga Beach)</p>
-            </div>
-
-            <div class="day-card">
-                <div class="day-header">
-                    <span class="day-badge">Day 4</span>
-                    <span class="day-location">Goa & Return</span>
-                </div>
-                <div class="activity-grid">
-                    <div class="activity-item"><i class="fa-brands fa-fort-awesome"></i> Aguada Fort</div>
-                    <div class="activity-item"><i class="fa-solid fa-church"></i> Old Goa Church (Heritage)</div>
-                    <div class="activity-item"><i class="fa-solid fa-umbrella-beach"></i> Calangute Beach</div>
-                    <div class="activity-item"><i class="fa-solid fa-umbrella-beach"></i> Colva Beach</div>
-                </div>
-                <p style="margin-top: 15px; border-top: 1px solid #f1f5f9; padding-top: 15px;">
-                    <strong>Evening:</strong> Dinner and return journey to college/drop point.
-                </p>
-            </div>
-
-        </div>
-
-        <div class="inclusions">
-            <h2>The Premium Experience</h2>
-            <div class="inc-grid">
-                <div class="inc-item">
-                    <i class="fa-solid fa-bed"></i>
-                    <h4>Luxury Stays</h4>
-                    <p>Deluxe rooms & Jungle resorts</p>
-                </div>
-                <div class="inc-item">
-                    <i class="fa-solid fa-utensils"></i>
-                    <h4>All Meals</h4>
-                    <p>Breakfast, Lunch & Dinner (Veg/Non-Veg)</p>
-                </div>
-                <div class="inc-item">
-                    <i class="fa-solid fa-ticket"></i>
-                    <h4>Entry Tickets</h4>
-                    <p>All sightseeing entry fees included</p>
-                </div>
-                <div class="inc-item">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <h4>Tour Manager</h4>
-                    <p>Dedicated assistance throughout</p>
-                </div>
-            </div>
-        </div>
-
+  <nav>
+    <a href="#" class="brand">Buraq_<span>TravelHub</span></a>
+    <div class="nav-actions">
+      <a href="tel:+919972792615"><i class="fa-solid fa-phone"></i> +91 9972792615</a>
+      <a href="mailto:msuhaib5146@gmail.com"><i class="fa-solid fa-envelope"></i> msuhaib5146@gmail.com</a>
     </div>
+  </nav>
 
-    <footer>
-        <div class="footer-cta">
-            <h3>Ready for an Adventure?</h3>
-            <div class="contact-box">
-                <a href="tel:+919972792615" class="contact-row">
-                    <i class="fa-solid fa-phone-volume"></i> +91 9972792615
-                </a>
-                <a href="mailto:msuhaib5146@gmail.com" class="contact-row">
-                    <i class="fa-solid fa-envelope-open-text"></i> msuhaib5146@gmail.com
-                </a>
-            </div>
-            <a href="mailto:msuhaib5146@gmail.com?subject=Booking%20Inquiry" class="btn-main">Book Now</a>
-        </div>
-        <div class="copyright">
-            Designed & Curated by <strong>Buraq_TravelHub</strong> &copy; 2025
-        </div>
-    </footer>
+  <header class="hero">
+    <div class="hero-content" data-reveal>
+      <span class="tag">4 Days — 5 Nights</span>
+      <h1>Chikmagalur • Dandeli • Goa</h1>
+      <p>A refined travel experience combining misty mountains, river adventures, and Goa’s iconic beaches.</p>
+      <a href="https://wa.me/919972792615?text=Hi,%20I%20am%20interested%20in%20the%20Chikmagalur-Dandeli-Goa%20Package" class="btn-primary">
+        Request Booking <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </header>
 
-    <a href="tel:+919972792615" class="floating-cta">
-        <i class="fa-solid fa-phone"></i>
-    </a>
+  <section class="container">
+    <div class="section-title" data-reveal>
+      <span>Highlights</span>
+      <h2>Three Iconic Destinations</h2>
+    </div>
+    <div class="grid">
+      <div class="card" data-reveal>
+        <i class="fa-solid fa-mountain-sun"></i>
+        <h3>Chikmagalur</h3>
+        <p>Mullayanagiri peak, Baba Budangiri & scenic waterfall jeep trails.</p>
+      </div>
+      <div class="card" data-reveal>
+        <i class="fa-solid fa-water"></i>
+        <h3>Dandeli</h3>
+        <p>Kayaking, rafting, zipline and jungle stay experiences.</p>
+      </div>
+      <div class="card" data-reveal>
+        <i class="fa-solid fa-umbrella-beach"></i>
+        <h3>Goa</h3>
+        <p>Golden beaches, heritage forts and vibrant nightlife.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="section-title" data-reveal>
+      <span>Itinerary</span>
+      <h2>Day-by-Day Journey</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-card" data-reveal>
+        <h4>Day 0 — Departure</h4>
+        <p>Overnight luxury coach journey to Chikmagalur.</p>
+      </div>
+      <div class="timeline-card" data-reveal>
+        <h4>Day 1 — Chikmagalur</h4>
+        <p>Fresh-up & breakfast. Visit Baba Budangiri, Mullayanagiri peak, waterfalls and enjoy a jeep trekking adventure.</p>
+      </div>
+      <div class="timeline-card" data-reveal>
+        <h4>Day 2 — Dandeli</h4>
+        <p>Water sports, kayaking, zipline, campfire, DJ night and jungle resort stay.</p>
+      </div>
+      <div class="timeline-card" data-reveal>
+        <h4>Day 3 — Goa</h4>
+        <p>Travel to Goa. Explore Vagator, Anjuna and Baga nightlife. Stay near Baga Beach.</p>
+      </div>
+      <div class="timeline-card" data-reveal>
+        <h4>Day 4 — Goa & Return</h4>
+        <p>Visit Aguada Fort, Calangute & Colva Beach. Dinner and return journey.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container inclusions" data-reveal>
+    <div class="section-title">
+      <span>Inclusions</span>
+      <h2>The Premium Experience</h2>
+    </div>
+    <div class="inc-grid">
+      <div>
+        <i class="fa-solid fa-bed"></i>
+        <h4>Luxury Stays</h4>
+        <p>Deluxe rooms & jungle resorts</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-utensils"></i>
+        <h4>All Meals</h4>
+        <p>Veg & Non-Veg meals included</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-ticket"></i>
+        <h4>Entry Tickets</h4>
+        <p>All sightseeing tickets covered</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-user-tie"></i>
+        <h4>Tour Manager</h4>
+        <p>Dedicated on-trip assistance</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Plan Your Escape</h3>
+    <div class="footer-contacts">
+      <a href="tel:+919972792615"><i class="fa-solid fa-phone"></i> +91 9972792615</a>
+      <a href="mailto:msuhaib5146@gmail.com"><i class="fa-solid fa-envelope"></i> msuhaib5146@gmail.com</a>
+    </div>
+    <p style="margin-top:20px; font-size:.85rem;">© 2025 Buraq_TravelHub. All rights reserved.</p>
+  </footer>
+
+  <a href="https://wa.me/919972792615" class="float-btn"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
