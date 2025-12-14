@@ -1,440 +1,772 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luxury Escape: Chikmagalur - Dandeli - Goa | Buraq TravelHub</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <title>Luxury Escape: Chikmagalur · Dandeli · Goa</title>
+  <meta name="description" content="4 Days, 5 Nights luxury trip to Chikmagalur, Dandeli and Goa.">
 
-  <!-- Fonts -->
+  <!-- Fonts + Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root {
-      --primary: #0b1120;
-      --accent: #d4af37;
-      --accent-soft: rgba(212, 175, 55, 0.15);
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --text-muted: #64748b;
-      --radius-xl: 22px;
-      --radius-md: 14px;
-      --shadow-lg: 0 30px 60px rgba(2, 6, 23, 0.15);
-      --shadow-md: 0 12px 30px rgba(2, 6, 23, 0.12);
+      --bg-deep: #050505;
+      --bg-panel: #0f111a;
+      --accent: #d4af37; /* Gold */
+      --accent-glow: rgba(212, 175, 55, 0.3);
+      --text-main: #f0f0f0;
+      --text-muted: #94a3b8;
+      --glass: rgba(20, 20, 30, 0.6);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-body: 'Outfit', sans-serif;
+      --font-heading: 'Playfair Display', serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing: border-box; outline: none; }
+    
+    html { scroll-behavior: smooth; }
+    
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: linear-gradient(180deg, #f8fafc, #eef2f7);
-      color: var(--primary);
-      line-height: 1.65;
+      margin: 0;
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      font-family: var(--font-body);
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
+    /* --- Custom Cursor --- */
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: width 0.3s, height 0.3s, background 0.3s;
+      mix-blend-mode: difference;
+      display: none; /* Hidden on touch devices via JS */
+    }
+    .cursor.hovered {
+      width: 50px;
+      height: 50px;
+      background: rgba(212, 175, 55, 0.1);
+      border-color: transparent;
     }
 
-    /* Smooth animations */
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
-
-    [data-reveal].visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Navigation */
+    /* --- Nav --- */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000;
-      background: rgba(11, 17, 32, 0.85);
-      backdrop-filter: blur(14px);
+      padding: 20px 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 6%;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(5, 5, 5, 0.7);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
     }
-
+    
     .brand {
-      font-size: 1.5rem;
+      font-family: var(--font-body);
       font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--text-main);
+      text-transform: uppercase;
       letter-spacing: 1px;
-      color: #fff;
-      text-decoration: none;
     }
-
     .brand span { color: var(--accent); }
 
-    .nav-actions a {
-      color: #e5e7eb;
-      text-decoration: none;
-      font-size: .9rem;
-      margin-left: 22px;
-      transition: color .3s ease;
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
     }
 
-    .nav-actions a:hover { color: var(--accent); }
+    .nav-icon {
+      color: var(--text-main);
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+    .nav-icon:hover { color: var(--accent); }
 
-    /* Hero */
-    header.hero {
+    .btn-book {
+      padding: 10px 24px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-book:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    /* --- Layout --- */
+    main {
+      position: relative;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding-top: 120px;
       min-height: 100vh;
-      background: linear-gradient(rgba(11,17,32,.55), rgba(11,17,32,.8)),
-        url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1920&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding-left: 6%;
+      padding-right: 6%;
+      padding-bottom: 60px;
+    }
+
+    /* Hero Text */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 6px 12px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 1.1;
+      margin: 0 0 24px;
+      background: linear-gradient(to right, #fff, #a5a5a5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+
+    /* 3D Canvas Container */
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      background: radial-gradient(circle at center, rgba(30,30,40,0.3), transparent 70%);
+      border-radius: 30px;
+      /* Border gradient trick */
+      background-clip: padding-box; 
+      border: 1px solid transparent;
+      z-index: 1;
+    }
+    
+    /* 3D Canvas itself */
+    #three-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      outline: none;
+      cursor: grab;
+    }
+    #three-canvas:active { cursor: grabbing; }
+
+    /* Floating Card in 3D view */
+    .float-card {
+      position: absolute;
+      bottom: 40px;
+      left: -20px;
+      background: rgba(15, 20, 30, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 120px 20px 80px;
+      gap: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      animation: float 6s ease-in-out infinite;
+      z-index: 5;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    .hero-content {
-      max-width: 900px;
-      color: #fff;
+    .float-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: cover;
     }
 
-    .hero-content .tag {
-      display: inline-block;
-      padding: 6px 18px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      font-size: .75rem;
-      margin-bottom: 24px;
+    /* --- Stats / Features Grid --- */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 60px;
     }
-
-    .hero-content h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      margin-bottom: 20px;
+    .stat-item {
+      background: rgba(255,255,255,0.03);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: 0.3s;
     }
-
-    .hero-content p {
-      max-width: 650px;
-      margin: 0 auto 36px;
-      opacity: .9;
-      font-size: 1.05rem;
+    .stat-item:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-5px);
     }
+    .stat-item h4 { margin: 0 0 5px; color: var(--accent); font-family: var(--font-heading); font-size: 1.2rem; }
+    .stat-item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 44px;
-      background: linear-gradient(135deg, var(--accent), #f0d77a);
-      color: #111827;
-      font-weight: 700;
-      text-decoration: none;
-      border-radius: 999px;
-      box-shadow: 0 20px 40px rgba(212,175,55,.45);
-      transition: transform .3s ease, box-shadow .3s ease;
+    /* --- Timeline Section --- */
+    .section-dark {
+      background: #08080c;
+      padding: 100px 6%;
+      position: relative;
     }
-
-    .btn-primary:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 30px 60px rgba(212,175,55,.55);
-    }
-
-    /* Sections */
-    .container {
-      max-width: 1150px;
-      margin: auto;
-      padding: 0 22px;
-    }
-
-    section { margin-bottom: 110px; }
 
     .section-title {
       text-align: center;
-      margin-bottom: 70px;
+      margin-bottom: 80px;
     }
-
-    .section-title span {
-      font-size: .8rem;
-      letter-spacing: 3px;
+    .section-title h2 {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      margin: 10px 0;
       color: var(--accent);
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 10px;
     }
 
-    .section-title h2 { font-size: 2.6rem; }
-
-    /* Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: var(--radius-xl);
-      padding: 34px;
-      box-shadow: var(--shadow-md);
-      transition: transform .35s ease, box-shadow .35s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .card i {
-      font-size: 2.6rem;
-      color: var(--accent);
-      margin-bottom: 18px;
-    }
-
-    .card p { color: var(--text-muted); }
-
-    /* Timeline */
     .timeline {
       position: relative;
       max-width: 900px;
-      margin: auto;
+      margin: 0 auto;
     }
-
+    /* Vertical Line */
     .timeline::before {
       content: '';
       position: absolute;
-      left: 20px;
-      top: 0;
-      bottom: 0;
+      left: 29px; /* Adjust based on dot size */
+      top: 20px;
+      bottom: 20px;
       width: 2px;
-      background: #e5e7eb;
+      background: linear-gradient(to bottom, var(--accent), transparent);
     }
 
-    .timeline-card {
-      background: #fff;
-      border-radius: var(--radius-md);
-      padding: 30px;
-      margin-bottom: 40px;
-      margin-left: 60px;
-      position: relative;
-      box-shadow: var(--shadow-md);
+    .timeline-item {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .timeline-card::before {
-      content: '';
-      position: absolute;
-      left: -38px;
-      top: 28px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px var(--accent-soft);
-    }
-
-    /* Inclusions */
-    .inclusions {
-      background: linear-gradient(135deg, #0b1120, #020617);
-      color: #fff;
-      padding: 90px 20px;
-      border-radius: 30px;
-    }
-
-    .inc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 34px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .inc-grid i {
-      font-size: 2.4rem;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    /* Footer */
-    footer {
-      background: #020617;
-      color: #94a3b8;
-      padding: 70px 20px 40px;
-      text-align: center;
-    }
-
-    footer h3 { color: #fff; margin-bottom: 24px; }
-
-    .footer-contacts a {
-      display: block;
-      color: #e5e7eb;
-      margin-bottom: 10px;
-      text-decoration: none;
-    }
-
-    .footer-contacts a:hover { color: var(--accent); }
-
-    /* Floating CTA */
-    .float-btn {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, var(--accent), #f0d77a);
+    .time-marker {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      background: var(--bg-panel);
+      border: 2px solid var(--accent);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 20px 40px rgba(212,175,55,.45);
-      z-index: 1000;
-      color: #111827;
-      font-size: 26px;
-      text-decoration: none;
+      font-weight: 700;
+      color: var(--accent);
+      z-index: 2;
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
-    @media (max-width: 768px) {
-      .nav-actions { display: none; }
-      .timeline::before { left: 8px; }
-      .timeline-card { margin-left: 36px; }
-      .timeline-card::before { left: -30px; }
+    .time-content {
+      background: var(--bg-panel);
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      flex-grow: 1;
+      position: relative;
     }
+    .time-content::before {
+      content: ''; /* Arrow */
+      position: absolute;
+      left: -10px;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background: var(--bg-panel);
+      transform: rotate(45deg);
+      border-left: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .time-content h3 { margin: 0 0 10px; color: var(--text-main); font-size: 1.3rem; }
+    .highlight-list {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .highlight-list li {
+      font-size: 0.85rem;
+      background: rgba(255,255,255,0.05);
+      padding: 5px 12px;
+      border-radius: 8px;
+      color: var(--text-muted);
+    }
+    .highlight-list li i { color: var(--accent); margin-right: 6px; }
+
+    /* --- Inclusions --- */
+    .inclusions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 80px auto 0;
+    }
+    .inc-card {
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), transparent);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+    .inc-card i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    /* --- Footer --- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 60px 6%;
+      text-align: center;
+      background: #020202;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+    }
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+    .footer-link:hover { color: var(--accent); }
+
+    /* --- Mobile Fixes --- */
+    @media (max-width: 1000px) {
+      main {
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+        text-align: center;
+      }
+      .lead { margin: 0 auto 40px; }
+      
+      .canvas-container {
+        height: 400px; /* Shorter on mobile */
+        order: -1; /* Move canvas to top if desired, or keep below. Let's keep below for text priority */
+        order: 2;
+        margin-top: -40px;
+        background: transparent; /* Remove radial bg on mobile to avoid boxiness */
+      }
+      .hero-content { order: 1; }
+      
+      .float-card {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -20px;
+        width: 90%;
+        animation: none; /* Disable float animation on mobile for performance */
+      }
+
+      .timeline::before { left: 20px; }
+      .time-marker { width: 40px; height: 40px; font-size: 0.9rem; }
+      .timeline-item { gap: 15px; }
+      
+      h1 { font-size: 2.8rem; }
+    }
+
+    /* Floating Mobile CTA */
+    .mobile-cta {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: #000;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+      z-index: 999;
+      font-size: 1.2rem;
+      text-decoration: none;
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-cta { display: flex; }
+      .nav-links { display: none; } /* Hide desktop nav links on mobile */
+    }
+
   </style>
 </head>
 <body>
 
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Navigation -->
   <nav>
     <a href="#" class="brand">Buraq_<span>TravelHub</span></a>
-    <div class="nav-actions">
-      <a href="tel:+919972792615"><i class="fa-solid fa-phone"></i> +91 9972792615</a>
-      <a href="mailto:msuhaib5146@gmail.com"><i class="fa-solid fa-envelope"></i> msuhaib5146@gmail.com</a>
+    
+    <div class="nav-links">
+      <a href="tel:+919972792615" class="nav-icon"><i class="fa-solid fa-phone"></i></a>
+      <a href="mailto:msuhaib5146@gmail.com" class="nav-icon"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://wa.me/919972792615" class="btn-book">Book Now</a>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="hero-content" data-reveal>
-      <span class="tag">4 Days — 5 Nights</span>
-      <h1>Chikmagalur • Dandeli • Goa</h1>
-      <p>A refined travel experience combining misty mountains, river adventures, and Goa’s iconic beaches.</p>
-      <a href="https://wa.me/919972792615?text=Hi,%20I%20am%20interested%20in%20the%20Chikmagalur-Dandeli-Goa%20Package" class="btn-primary">
-        Request Booking <i class="fa-solid fa-arrow-right"></i>
-      </a>
+  <!-- Hero Section -->
+  <main>
+    <div class="hero-content">
+      <span class="tag">Premium Package</span>
+      <h1>Experience the<br>Unforgettable.</h1>
+      <p class="lead">
+        A 4-day cinematic journey through the misty peaks of Chikmagalur, the wild rivers of Dandeli, and the golden shores of Goa.
+      </p>
+      
+      <!-- Stats / Highlights -->
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h4>Misty</h4>
+          <p>Chikmagalur Peaks</p>
+        </div>
+        <div class="stat-item">
+          <h4>Wild</h4>
+          <p>Dandeli Rafting</p>
+        </div>
+        <div class="stat-item">
+          <h4>Vibrant</h4>
+          <p>Goa Nightlife</p>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <section class="container">
-    <div class="section-title" data-reveal>
-      <span>Highlights</span>
-      <h2>Three Iconic Destinations</h2>
-    </div>
-    <div class="grid">
-      <div class="card" data-reveal>
-        <i class="fa-solid fa-mountain-sun"></i>
-        <h3>Chikmagalur</h3>
-        <p>Mullayanagiri peak, Baba Budangiri & scenic waterfall jeep trails.</p>
-      </div>
-      <div class="card" data-reveal>
-        <i class="fa-solid fa-water"></i>
-        <h3>Dandeli</h3>
-        <p>Kayaking, rafting, zipline and jungle stay experiences.</p>
-      </div>
-      <div class="card" data-reveal>
-        <i class="fa-solid fa-umbrella-beach"></i>
-        <h3>Goa</h3>
-        <p>Golden beaches, heritage forts and vibrant nightlife.</p>
+    <div class="canvas-container">
+      <canvas id="three-canvas"></canvas>
+      
+      <!-- Floating Glass Card -->
+      <div class="float-card">
+        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=200&auto=format&fit=crop" alt="Goa">
+        <div>
+          <div style="font-weight: 700; color: #fff;">Luxury Stay</div>
+          <div style="font-size: 0.8rem; color: #ccc;">AC Rooms with Pool</div>
+        </div>
       </div>
     </div>
-  </section>
+  </main>
 
-  <section class="container">
-    <div class="section-title" data-reveal>
-      <span>Itinerary</span>
-      <h2>Day-by-Day Journey</h2>
-    </div>
-    <div class="timeline">
-      <div class="timeline-card" data-reveal>
-        <h4>Day 0 — Departure</h4>
-        <p>Overnight luxury coach journey to Chikmagalur.</p>
-      </div>
-      <div class="timeline-card" data-reveal>
-        <h4>Day 1 — Chikmagalur</h4>
-        <p>Fresh-up & breakfast. Visit Baba Budangiri, Mullayanagiri peak, waterfalls and enjoy a jeep trekking adventure.</p>
-      </div>
-      <div class="timeline-card" data-reveal>
-        <h4>Day 2 — Dandeli</h4>
-        <p>Water sports, kayaking, zipline, campfire, DJ night and jungle resort stay.</p>
-      </div>
-      <div class="timeline-card" data-reveal>
-        <h4>Day 3 — Goa</h4>
-        <p>Travel to Goa. Explore Vagator, Anjuna and Baga nightlife. Stay near Baga Beach.</p>
-      </div>
-      <div class="timeline-card" data-reveal>
-        <h4>Day 4 — Goa & Return</h4>
-        <p>Visit Aguada Fort, Calangute & Colva Beach. Dinner and return journey.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="container inclusions" data-reveal>
+  <!-- Itinerary Section -->
+  <section class="section-dark" id="itinerary">
     <div class="section-title">
-      <span>Inclusions</span>
-      <h2>The Premium Experience</h2>
+      <span style="color:var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">The Journey</span>
+      <h2>Detailed Itinerary</h2>
     </div>
-    <div class="inc-grid">
-      <div>
-        <i class="fa-solid fa-bed"></i>
-        <h4>Luxury Stays</h4>
-        <p>Deluxe rooms & jungle resorts</p>
+
+    <div class="timeline">
+      
+      <!-- Day 0 -->
+      <div class="timeline-item" data-reveal>
+        <div class="time-marker">D0</div>
+        <div class="time-content">
+          <h3>Departure</h3>
+          <p style="color: var(--text-muted);">Overnight journey to Chikmagalur via luxury coach. Relax and prepare for the adventure.</p>
+        </div>
       </div>
-      <div>
+
+      <!-- Day 1 -->
+      <div class="timeline-item" data-reveal>
+        <div class="time-marker">D1</div>
+        <div class="time-content">
+          <h3>Chikmagalur Expedition</h3>
+          <p style="color: var(--text-muted);">Arrival, fresh-up & breakfast. Explore the coffee land.</p>
+          <ul class="highlight-list">
+            <li><i class="fa-solid fa-mountain"></i> Mullayanagiri</li>
+            <li><i class="fa-solid fa-cloud"></i> Baba Budangiri</li>
+            <li><i class="fa-solid fa-water"></i> Hebbe Falls (Jeep Trek)</li>
+            <li><i class="fa-solid fa-bus"></i> Night Travel to Dandeli</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="timeline-item" data-reveal>
+        <div class="time-marker">D2</div>
+        <div class="time-content">
+          <h3>Dandeli Adventure</h3>
+          <p style="color: var(--text-muted);">Adrenaline pumping water sports and jungle vibes.</p>
+          <ul class="highlight-list">
+            <li><i class="fa-solid fa-ship"></i> Kayaking & Boating</li>
+            <li><i class="fa-solid fa-person-falling"></i> Zipline</li>
+            <li><i class="fa-solid fa-water"></i> Water Zorbing</li>
+            <li><i class="fa-solid fa-fire"></i> Campfire & DJ</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="timeline-item" data-reveal>
+        <div class="time-marker">D3</div>
+        <div class="time-content">
+          <h3>Goa: North Vibes</h3>
+          <p style="color: var(--text-muted);">Morning travel to Goa. Check-in to AC rooms near Baga.</p>
+          <ul class="highlight-list">
+            <li><i class="fa-solid fa-umbrella-beach"></i> Vagator Beach</li>
+            <li><i class="fa-solid fa-umbrella-beach"></i> Anjuna Beach</li>
+            <li><i class="fa-solid fa-martini-glass"></i> Baga Nightlife</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="timeline-item" data-reveal>
+        <div class="time-marker">D4</div>
+        <div class="time-content">
+          <h3>Heritage & Return</h3>
+          <p style="color: var(--text-muted);">Soak in the last bits of Goa before returning.</p>
+          <ul class="highlight-list">
+            <li><i class="fa-brands fa-fort-awesome"></i> Aguada Fort</li>
+            <li><i class="fa-solid fa-church"></i> Old Goa Church</li>
+            <li><i class="fa-solid fa-umbrella-beach"></i> Calangute & Colva</li>
+            <li><i class="fa-solid fa-bus"></i> Return Journey</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Inclusions -->
+    <div class="inclusions" data-reveal>
+      <div class="inc-card">
         <i class="fa-solid fa-utensils"></i>
         <h4>All Meals</h4>
-        <p>Veg & Non-Veg meals included</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Breakfast, Lunch, Dinner<br>(Veg & Non-Veg)</p>
       </div>
-      <div>
+      <div class="inc-card">
+        <i class="fa-solid fa-bed"></i>
+        <h4>Luxury Stays</h4>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Deluxe Rooms & Jungle Resorts</p>
+      </div>
+      <div class="inc-card">
+        <i class="fa-solid fa-user-shield"></i>
+        <h4>Tour Manager</h4>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Assistance & Security</p>
+      </div>
+      <div class="inc-card">
         <i class="fa-solid fa-ticket"></i>
         <h4>Entry Tickets</h4>
-        <p>All sightseeing tickets covered</p>
-      </div>
-      <div>
-        <i class="fa-solid fa-user-tie"></i>
-        <h4>Tour Manager</h4>
-        <p>Dedicated on-trip assistance</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Included in package</p>
       </div>
     </div>
+
   </section>
 
   <footer>
-    <h3>Plan Your Escape</h3>
-    <div class="footer-contacts">
-      <a href="tel:+919972792615"><i class="fa-solid fa-phone"></i> +91 9972792615</a>
-      <a href="mailto:msuhaib5146@gmail.com"><i class="fa-solid fa-envelope"></i> msuhaib5146@gmail.com</a>
+    <div style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 20px;">Buraq_<span>TravelHub</span></div>
+    <div style="margin-bottom: 30px; color: var(--text-muted);">Curating memories, one trip at a time.</div>
+    
+    <div class="footer-links">
+      <a href="tel:+919972792615" class="footer-link"><i class="fa-solid fa-phone"></i></a>
+      <a href="mailto:msuhaib5146@gmail.com" class="footer-link"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://wa.me/919972792615" class="footer-link"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
-    <p style="margin-top:20px; font-size:.85rem;">© 2025 Buraq_TravelHub. All rights reserved.</p>
+
+    <div style="font-size: 0.8rem; color: #555;">
+      Contact: +91 9972792615 • msuhaib5146@gmail.com<br>
+      &copy; 2025 Buraq_TravelHub. All rights reserved.
+    </div>
   </footer>
 
-  <a href="https://wa.me/919972792615" class="float-btn"><i class="fa-brands fa-whatsapp"></i></a>
+  <!-- Mobile Floating CTA -->
+  <a href="tel:+919972792615" class="mobile-cta" aria-label="Call Now">
+    <i class="fa-solid fa-phone"></i>
+  </a>
 
+  <!-- Three.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+  
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+    // --- Custom Cursor Logic ---
+    const cursor = document.getElementById('cursor');
+    // Only show custom cursor on non-touch devices
+    if (window.matchMedia("(pointer: fine)").matches) {
+      cursor.style.display = 'block';
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
       });
-    }, { threshold: 0.15 });
+      document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+      });
+    }
 
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    // --- Reveal Animation on Scroll ---
+    const revealElements = document.querySelectorAll("[data-reveal]");
+    const revealScroll = () => {
+      const windowHeight = window.innerHeight;
+      const elementVisible = 100;
+      revealElements.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - elementVisible) {
+          el.classList.add("visible");
+        }
+      });
+    };
+    window.addEventListener("scroll", revealScroll);
+    revealScroll(); // Trigger once on load
+
+    // --- Three.js Scene Setup ---
+    const canvas = document.getElementById('three-canvas');
+    const scene = new THREE.Scene();
+    
+    // Transparent background
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    
+    // Camera
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+    camera.position.z = 5;
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const pointLight = new THREE.PointLight(0xd4af37, 2); // Gold light
+    pointLight.position.set(5, 5, 5);
+    scene.add(pointLight);
+
+    const blueLight = new THREE.PointLight(0x0b76ef, 1); // Blue accent
+    blueLight.position.set(-5, -5, 2);
+    scene.add(blueLight);
+
+    // Objects Group
+    const group = new THREE.Group();
+    scene.add(group);
+
+    // 1. Wireframe Icosahedron (The "Globe")
+    const geometry = new THREE.IcosahedronGeometry(1.5, 1);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x111111,
+      roughness: 0.3,
+      metalness: 0.8,
+      flatShading: true
+    });
+    const sphere = new THREE.Mesh(geometry, material);
+    group.add(sphere);
+
+    // 2. Wireframe Overlay
+    const wireGeo = new THREE.WireframeGeometry(geometry);
+    const wireMat = new THREE.LineBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.15 });
+    const wireframe = new THREE.LineSegments(wireGeo, wireMat);
+    group.add(wireframe);
+
+    // 3. Floating Particles
+    const particlesGeo = new THREE.BufferGeometry();
+    const particlesCount = 300;
+    const posArray = new Float32Array(particlesCount * 3);
+    for(let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 8; // Spread
+    }
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMat = new THREE.PointsMaterial({
+      size: 0.02,
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.6
+    });
+    const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particlesMesh);
+
+    // Animation Loop
+    const animate = () => {
+      requestAnimationFrame(animate);
+
+      // Rotate Main Object
+      sphere.rotation.y += 0.002;
+      sphere.rotation.x += 0.001;
+      wireframe.rotation.y += 0.002;
+      wireframe.rotation.x += 0.001;
+
+      // Rotate Particles slowly
+      particlesMesh.rotation.y -= 0.0005;
+
+      // Subtle mouse interaction (parallax)
+      camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+      camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.05;
+      camera.lookAt(scene.position);
+
+      renderer.render(scene, camera);
+    };
+
+    // Resize Handler
+    const handleResize = () => {
+      const container = canvas.parentElement;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height, false); // false prevents style overwrite
+    };
+
+    window.addEventListener('resize', handleResize);
+    
+    // Initial size check
+    handleResize();
+
+    // Mouse Tracking for Parallax
+    let mouseX = 0;
+    let mouseY = 0;
+    document.addEventListener('mousemove', (event) => {
+      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+      mouseY = (event.clientY / window.innerHeight) * 2 - 1;
+    });
+
+    animate();
   </script>
-
 </body>
 </html>
